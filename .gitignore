@@ -1,0 +1,12 @@
+migrations/
+__pycache__/
+env/
+venv/
+.idea/
+media/
+logs/
+*.DS_Store
+*.rdb
+*.json
+*.jl
+*celerybeat-schedule
