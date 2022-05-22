@@ -1,8 +1,6 @@
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 
-from loguru import logger
-
 from ..items import Clothes
 from ..item_loaders import ClothesLoader
 
@@ -52,13 +50,9 @@ class MacysCrawlSpider(CrawlSpider):
                 f"div[@class='priceInfo']/div[@class='prices']/"
                 f"div[last()]/span[1]/text()[2]").get()
         )
-        img_url = inp_item.xpath(
-                "div[1]/a/div/picture/img/@data-lazysrc").get()
         loader.add_value(
-            'img_url', img_url
+            'image_urls', [inp_item.xpath(
+                "div[1]/a/div/picture/img/@data-lazysrc").extract()]
         )
-        if not img_url:
-            logger.success(inp_item.xpath(
-                "div[1]/a/div/picture/img").get())
 
         return loader.load_item()

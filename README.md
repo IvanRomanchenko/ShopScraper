@@ -13,11 +13,13 @@ cd ShopScraper/app/
 ## Setting up
 #### Choose the suitable for you pipeline in `ShopScraper/settings.py` or all simultaneously. Just uncomment needed.
 ##### _For RedisWriterPipeline, you need to install and run Redis_
+##### _If you want to upload images from received urls, uncomment the line `'scrapy.pipelines.images.ImagesPipeline': 1`_
 ```python
 ITEM_PIPELINES = {
-   # 'ShopScraper.pipelines.JsonWriterPipeline': 300,
-   'ShopScraper.pipelines.JsonLineWriterPipeline': 400,
-   # 'ShopScraper.pipelines.RedisWriterPipeline': 500,
+    # 'scrapy.pipelines.images.ImagesPipeline': 1,
+    # 'ShopScraper.pipelines.JsonWriterPipeline': 300,
+    'ShopScraper.pipelines.JsonLineWriterPipeline': 400,
+    # 'ShopScraper.pipelines.RedisWriterPipeline': 500,
 }
 ```
 
